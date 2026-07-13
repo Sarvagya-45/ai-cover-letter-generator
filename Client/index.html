@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CoverCraft AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+
+    <nav class="navbar">
+      <div class="logo">
+        <span class="logo-icon"> ✨ </span>
+
+        <span> CoverCraft AI </span>
+      </div>
+
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
+
+    <!-- Hero -->
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Generate Professional Cover Letters with AI</h1>
+
+        <p>
+          Create personalized, ATS-friendly cover letters in seconds using AI.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Container -->
+
+    <main class="container">
+      <!-- Form Card -->
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Candidate Information</h2>
+
+          <p>Fill in your details to generate a tailored cover letter.</p>
+        </div>
+
+        <form id="coverForm">
+          <!-- Name -->
+
+          <div class="input-group">
+            <label for="name"> Candidate Name </label>
+
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <!-- Job Role -->
+
+          <div class="input-group">
+            <label for="role"> Target Role </label>
+
+            <input
+              type="text"
+              id="role"
+              placeholder="Frontend Developer"
+              required
+            />
+          </div>
+
+          <!-- Company -->
+
+          <div class="input-group">
+            <label for="company"> Target Company </label>
+
+            <input type="text" id="company" placeholder="Google" required />
+          </div>
+
+          <!-- Skills -->
+
+          <div class="input-group">
+            <label for="skills"> Key Skills </label>
+
+            <textarea
+              id="skills"
+              rows="5"
+              placeholder="JavaScript, React, Node.js, UI Design..."
+              required
+            ></textarea>
+
+            <small id="charCount"> 0 Characters </small>
+          </div>
+
+          <!-- Resume Upload -->
+
+          <div class="input-group">
+            <label for="resume"> Upload Resume (PDF) </label>
+
+            <input type="file" id="resume" accept=".pdf" />
+
+            <small>
+              Optional - AI will use your resume content for better
+              personalization.
+            </small>
+          </div>
+
+          <!-- Generate Button -->
+
+          <button type="submit" id="generateBtn" class="generate-btn">
+            ✨ Generate Cover Letter
+          </button>
+        </form>
+      </section>
+
+      <!-- Loading Card -->
+
+      <section id="loadingCard" class="loading-card hidden">
+        <div class="spinner"></div>
+
+        <h3>Generating Cover Letter...</h3>
+
+        <p>AI is analyzing your information.</p>
+      </section>
+
+      <!-- Output Card -->
+
+      <section id="outputCard" class="card output-card">
+        <div class="card-header">
+          <h2>Generated Cover Letter</h2>
+
+          <p>Review and customize before sending.</p>
+        </div>
+
+        <div id="letterOutput" class="letter-output">
+          Your generated cover letter will appear here...
+        </div>
+
+        <div class="action-buttons">
+          <button id="copyBtn" class="action-btn">📋 Copy</button>
+
+          <button id="downloadTxtBtn" class="action-btn">
+            📄 Download TXT
+          </button>
+
+          <button id="downloadPdfBtn" class="action-btn">
+            ⬇️ Download PDF
+          </button>
+        </div>
+      </section>
+
+      <!-- History -->
+
+      <section class="card">
+        <div class="card-header history-header">
+          <div>
+            <h2>Recent Generations</h2>
+
+            <p>Quickly access your previously generated letters.</p>
+          </div>
+
+          <button id="clearHistoryBtn" class="clear-history-btn">
+            🗑️ Clear History
+          </button>
+        </div>
+
+        <div id="historyList" class="history-list">
+          <p class="empty-history">No cover letters generated yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast -->
+
+    <div id="toast" class="toast">Copied Successfully</div>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+      <p>© 2026 CoverCraft AI. Built with Gemini AI.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
