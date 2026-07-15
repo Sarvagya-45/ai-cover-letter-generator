@@ -247,21 +247,24 @@ coverForm.addEventListener("submit", async (event) => {
   showLoading();
 
   try {
-    const response = await fetch("http://localhost:3000/generate", {
-      method: "POST",
+    const response = await fetch(
+      "https://https://ai-cover-letter-generator-3hpc.onrender.com.onrender.com/generate",
+      {
+        method: "POST",
 
-      headers: {
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          name,
+          role,
+          company,
+          skills,
+          resumeText: resumeText || "",
+        }),
       },
-
-      body: JSON.stringify({
-        name,
-        role,
-        company,
-        skills,
-        resumeText: resumeText || "",
-      }),
-    });
+    );
 
     const data = await response.json();
 

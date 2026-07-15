@@ -56,6 +56,7 @@ app.get("/", (req, res) => {
 
 app.post("/generate", async (req, res) => {
   console.log("Generate request received");
+
   const { name, role, company, skills, resumeText } = req.body;
 
   try {
@@ -73,20 +74,26 @@ app.post("/generate", async (req, res) => {
 
 You are an expert HR recruiter and career coach.
 
-Write a professional ATS-friendly cover letter.
+Write a professional, ATS-friendly cover letter.
 
-Name: ${name}
-
-Role: ${role}
-
-Company: ${company}
-
+Candidate Name: ${name}
+Target Role: ${role}
+Target Company: ${company}
 Skills: ${skills}
 
 Resume Content:
 ${resumeText || "Not Provided"}
 
-Generate a personalized cover letter.
+Requirements:
+- Professional and confident tone
+- Mention skills naturally
+- Mention company name naturally
+- Strong opening and closing
+- Around 250-350 words
+- No bullet points
+
+Generate the cover letter.
+
 `;
 
     const result = await generateWithRetry(model, prompt);
@@ -103,17 +110,26 @@ Generate a personalized cover letter.
   } catch (error) {
     console.error("Gemini Error:", error);
 
+    console.log("Fallback Triggered");
+
     const fallbackLetter = `
 
 Dear Hiring Manager at ${company},
-My name is ${name} and I am applying for the ${role} position.
-My key skills include ${skills}.
-I am excited about the opportunity to contribute to your organization.
-Thank you for your consideration.
+
+I am writing to express my interest in the ${role} position at ${company}.
+
+With skills in ${skills}, I have developed a strong foundation that enables me to contribute effectively to challenging projects and collaborate successfully within professional teams.
+
+I am particularly interested in joining ${company} because of its reputation for innovation, growth, and excellence. I am eager to apply my knowledge, continue learning from experienced professionals, and contribute meaningful value to your organization.
+
+My background, combined with my enthusiasm for continuous improvement and problem-solving, makes me a motivated candidate for this opportunity.
+
+Thank you for considering my application. I would welcome the opportunity to discuss how my skills and dedication can contribute to the success of ${company}.
 
 Sincerely,
 
 ${name}
+
 `;
 
     return res.json({
