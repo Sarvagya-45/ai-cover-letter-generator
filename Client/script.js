@@ -248,7 +248,7 @@ coverForm.addEventListener("submit", async (event) => {
 
   try {
     const response = await fetch(
-      "https://https://ai-cover-letter-generator-3hpc.onrender.com.onrender.com/generate",
+      "https://ai-cover-letter-generator-3hpc.onrender.com/generate",
       {
         method: "POST",
 
