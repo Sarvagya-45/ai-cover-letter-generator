@@ -22,3 +22,4 @@ build/
 
 # Coverage
 coverage/
+.env.local
